@@ -1,6 +1,7 @@
 import ffmpeg
 import os
 
+
 def video_to_gif():
     for file in os.listdir('videos'):
         if file.endswith((".mp4", ".MP4")):
@@ -8,6 +9,7 @@ def video_to_gif():
             gif_name = file_name + '.gif'
 
             stream = ffmpeg.input(f'videos/{file}')
+            stream = ffmpeg.trim(stream, start = 0, duration = 10)
             stream = ffmpeg.filter(stream, 'fps',fps=5)
             stream = ffmpeg.output(stream, f'gifs/{gif_name}')
             ffmpeg.run(stream)
