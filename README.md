@@ -1,1 +1,1 @@
-# mp4-to-gif
+##Simple project for python practice
